@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FleetFlow Global | Autonomous Logistics Telemetry</title>
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2'/%3E%3Cpath d='M15 18H9'/%3E%3Cpath d='M19 18h2a1 1 0 0 0 1-1v-5l-4-4h-4v10'/%3E%3Ccircle cx='7' cy='18' r='2'/%3E%3Ccircle cx='17' cy='18' r='2'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <script>
+    // Completely silence the Tailwind dev warning before it evaluates
+    (function () {
+      var origWarn = console.warn;
+      console.warn = function () {
+        if (arguments[0] && typeof arguments[0] === 'string' && arguments[0].indexOf('cdn.tailwindcss.com') !== -1) {
+          return;
+        }
+        origWarn.apply(console, arguments);
+      };
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#060911',
+              card: '#0c1322',
+              surface: '#111b2e',
+              border: '#1b2a47',
+              accent: '#38bdf8',
+              accentHover: '#0ea5e9'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #060911;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .leaflet-container {
+      background-color: #060911 !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+    }
+
+    .leaflet-tile {
+      filter: brightness(0.65) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) !important;
+    }
+
+    .leaflet-popup-content-wrapper {
+      background-color: #0c1322 !important;
+      color: #f8fafc !important;
+      border: 1px solid #1b2a47 !important;
+      border-radius: 0.75rem !important;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .leaflet-popup-tip {
+      background-color: #0c1322 !important;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #060911;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #1b2a47;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #38bdf8;
+    }
+  </style>
+</head>
+
+<body class="bg-brand-dark text-slate-100 antialiased selection:bg-sky-500 selection:text-white">
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
